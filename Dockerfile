@@ -14,4 +14,4 @@ RUN go build -o /app/devOpsAlarm
 FROM balenalib/raspberry-pi-debian
 COPY --from=build /app/devOpsAlarm /app/
 
-CMD ["ls /app", "&&", "/app/devOpsAlarm" ]
+CMD ["/app/devOpsAlarm" ]
