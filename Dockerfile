@@ -1,5 +1,5 @@
 # Change image appropriately for the board you are using, see options at: https://www.balena.io/docs/reference/base-images/base-images-ref/
-FROM balenalib/raspberry-pi-golang
+FROM balenalib/raspberry-pi-golang as build
 
 WORKDIR /app
 
