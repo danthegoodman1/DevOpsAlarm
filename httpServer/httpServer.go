@@ -25,6 +25,7 @@ func StartHTTPServer() {
 	Server.Echo.Use(middleware.Logger())
 
 	Server.registerRoutes()
+	SetupTicker() // Start the Alarm status ticker
 
 	log.Println("Starting DevOps on port 80")
 	Server.Echo.Logger.Fatal(Server.Echo.Start(":80"))
@@ -33,6 +34,8 @@ func StartHTTPServer() {
 func (s *HTTPServer) registerRoutes() {
 	// Health check route
 	s.Echo.GET("/hc", healthCheck)
+
+	s.Echo.POST("/alarm", Post_Alarm)
 }
 
 func healthCheck(c echo.Context) error {

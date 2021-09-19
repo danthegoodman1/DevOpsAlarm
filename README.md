@@ -17,7 +17,7 @@ This project is written in Go to optimize for lower resource devices like the RP
 - Easily customize and push updates over the air with balena
 - Expose your device to webhooks without the need for any backend infrastructure
 - Make it excruciatingly apparent when there is an incident while on call with flashing lights and a buzzer
-- Alarm automatically disables once the incident is acknowledged
+- Alarm automatically disables once the incident is acknowledged, or a minute has passed since activation
 
 
 ## Required Parts
