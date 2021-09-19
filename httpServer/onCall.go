@@ -6,8 +6,8 @@ import (
 	"log"
 	"time"
 
+	"github.com/brian-armstrong/gpio"
 	"github.com/labstack/echo/v4"
-	"github.com/stianeikeland/go-rpio/v4"
 )
 
 var (
@@ -40,20 +40,25 @@ func SetupTicker() {
 }
 
 func AlarmLoop() {
-	utils.HandleError(rpio.Open())
-	pin := rpio.Pin(11) // GPIO 17, see https://pinout.xyz/pinout/pin11_gpio17
-	pin.Output()
+	pinState := false
+	pin := gpio.NewOutput(13, pinState) // GPIO 27, see https://pinout.xyz/pinout/pin11_gpio17
 	for {
 		select {
 		case <-AbortChan: // Exit the alarm loop
-			rpio.Close()
 			return
 		case <-Ticker.C: // Check for whether the alarm is active
 			utils.DebugLog(fmt.Sprintf("Alarm less then 1 min old: %t", time.Now().Before(LastAlarmStart.Add(time.Minute*1))))
 			utils.DebugLog(fmt.Sprintf("Alarm active: %t", AlarmActive))
 			if time.Now().Before(LastAlarmStart.Add(time.Minute*1)) && AlarmActive { // Only last for 1 minute, or while enabled
+				utils.DebugLog("Enabling alarm")
 				// Toggle physical alarm pin
-				pin.Toggle()
+				if pinState {
+					pinState = false
+					pin.Low()
+				} else {
+					pinState = true
+					pin.High()
+				}
 			} else {
 				utils.DebugLog("Disabling alarm")
 				AlarmActive = false
