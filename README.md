@@ -8,6 +8,8 @@ On-call DevOps support and engineers need to be notified ASAP when an incident o
 
 To solve this, I've made a device using simple off the self parts and free software to support a physical on-call alarm. Combining an industrial signal light stack, a buzzer, a Raspberry Pi (or any device balena supports), and the balena platform, for under $25 you can make a physical alarm that goes off when an incident occurs while on-call.
 
+This project is written in Go to optimize for lower resource devices like the RPi Zero W.
+
 ## Features
 
 - Support various incident management solutions (including custom) WIP
