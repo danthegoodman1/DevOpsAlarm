@@ -26,7 +26,7 @@ func StartHTTPServer() {
 
 	Server.registerRoutes()
 
-	log.Println("Starting Host API on port 80")
+	log.Println("Starting DevOps on port 80")
 	Server.Echo.Logger.Fatal(Server.Echo.Start(":80"))
 }
 

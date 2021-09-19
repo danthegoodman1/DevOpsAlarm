@@ -1,0 +1,8 @@
+version: "2"
+services:
+  dev-ops-alarm:
+    build: .
+    ports:
+      - "80:80"
+    environment:
+      - DEBUG=true
