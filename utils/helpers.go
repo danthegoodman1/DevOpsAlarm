@@ -10,3 +10,10 @@ func DebugLog(message ...interface{}) {
 		fmt.Println(message...)
 	}
 }
+
+// Don't do this in real production code
+func HandleError(err error) {
+	if err != nil {
+		panic(err)
+	}
+}

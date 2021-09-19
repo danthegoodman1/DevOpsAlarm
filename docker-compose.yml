@@ -1,6 +1,7 @@
 version: "2"
 services:
   dev-ops-alarm:
+    privileged: true
     build: .
     ports:
       - "80:80"
