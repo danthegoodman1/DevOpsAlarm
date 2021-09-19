@@ -46,6 +46,7 @@ func AlarmLoop() {
 	for {
 		select {
 		case <-AbortChan: // Exit the alarm loop
+			rpio.Close()
 			return
 		case <-Ticker.C: // Check for whether the alarm is active
 			utils.DebugLog(fmt.Sprintf("Alarm less then 1 min old: %t", time.Now().Before(LastAlarmStart.Add(time.Minute*1))))
