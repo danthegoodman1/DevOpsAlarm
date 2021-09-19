@@ -51,11 +51,12 @@ func AlarmLoop() {
 			utils.DebugLog(fmt.Sprintf("Alarm less then 1 min old: %t", time.Now().Before(LastAlarmStart.Add(time.Minute*1))))
 			utils.DebugLog(fmt.Sprintf("Alarm active: %t", AlarmActive))
 			if time.Now().Before(LastAlarmStart.Add(time.Minute*1)) && AlarmActive { // Only last for 1 minute, or while enabled
-
+				// Toggle physical alarm pin
+				pin.Toggle()
 			} else {
 				utils.DebugLog("Disabling alarm")
 				AlarmActive = false
-				pin.Low()
+				pin.Low() // Turn off physical alarm
 			}
 		}
 	}
