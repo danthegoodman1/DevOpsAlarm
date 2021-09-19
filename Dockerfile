@@ -1,4 +1,5 @@
-FROM golang:1.16-buster as build
+# Change image appropriately for the board you are using, see options at: https://www.balena.io/docs/reference/base-images/base-images-ref/
+FROM balenalib/raspberry-pi-golang
 
 WORKDIR /app
 
