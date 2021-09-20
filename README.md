@@ -25,3 +25,8 @@ This project is written in Go to optimize for lower resource devices like the RP
 - Raspberry Pi (Zero W in my case)
 - Some sort of AC power relay or MOSFET for power switching the light and buzzer (I used a 120v AC Relay with a 120v light and buzzer)
 - A balena account
+
+## Todo:
+- Add security options so the endpoint is not publicly accessible (and thus abusable)
+- Add framework/guide for writing handlers for other incident management solutions
+- Write blog post
