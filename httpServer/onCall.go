@@ -66,7 +66,7 @@ func AlarmLoop() {
 			} else {
 				utils.DebugLog("Disabling alarm")
 				AlarmActive = false
-				pin.Low() // Turn off physical alarm
+				pin.High() // Turn off physical alarm (input low)
 			}
 		}
 	}
