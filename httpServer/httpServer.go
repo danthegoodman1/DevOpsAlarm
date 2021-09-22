@@ -36,6 +36,7 @@ func (s *HTTPServer) registerRoutes() {
 	s.Echo.GET("/hc", healthCheck)
 
 	s.Echo.POST("/alarm", Post_Alarm)
+	s.Echo.GET("/ack", Get_Ack)
 }
 
 func healthCheck(c echo.Context) error {

@@ -23,6 +23,14 @@ func Post_Alarm(c echo.Context) error {
 	return c.String(200, "Activated alarm!")
 }
 
+func Get_Ack(c echo.Context) error {
+	if AlarmActive {
+		log.Println("Acknowledged, deactivating alarm")
+		DeactivateAlarm()
+	}
+	return c.String(200, "Acked")
+}
+
 func ActivateAlarm() {
 	LastAlarmStart = time.Now()
 	AlarmActive = true
